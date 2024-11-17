@@ -1,30 +1,36 @@
-/* 
-  <div id="parent">
-    <div id="child1">
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-    </div> 
-    <div id="child2">
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-    </div>
-    </div>
-*/
+import React from "react";
+import ReactDOM from 'react-dom/client'
 
-const heading = React.createElement("h1", { id: "heading" }, "Hello World");
-const divElement1 = React.createElement("div", { id: "child1" }, [
-  heading,
-  heading,
-]);
-const divElement2 = React.createElement("div", { id: "child2" }, [
-  heading,
-  heading,
-]);
-const parentDivElement = React.createElement("div", { id: "parent" }, [
-  divElement1,
-  divElement2,
-]);
 
-console.log(heading);
+const heading = (
+    <div>
+        <h1>
+            This is signle heading element in React.
+        </h1>
+    </div>
+)
+
+const Header = () => {
+    return <h1>Hello! from Header.</h1>
+}
+
+const Layout  = () => {
+
+    const price1 = 2000;
+    const price2 = 2000;
+
+    const calculatePrice = () => {
+        return price1 + price2;
+    }
+
+    return (
+        <div>
+            <Header />
+            {heading}
+            <h1>This is my product price : {calculatePrice()}</h1>
+        </div>
+    )
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parentDivElement);
+root.render(<Layout />);
